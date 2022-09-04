@@ -1,0 +1,25 @@
+
+
+.ItemListContainer{
+    text-align: center;
+    margin: 30px auto;
+    font-family: sans-serif;
+    max-width: 90%;
+    min-height: 72vh;
+}
+
+.titulo{
+    font-size: 60px;
+}
+
+@media screen and (max-width: 1100px){
+    .ItemListContainer{
+        margin-top: 80px;
+    }
+ }
+
+@media screen and (max-width: 415px){
+    .titulo{
+        font-size: 50px;
+    }
+}

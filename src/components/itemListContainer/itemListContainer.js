@@ -1,8 +1,18 @@
 
-const itemListContainer = () => {
+import './ItemListContainer.css';
+
+function ItemListContainer ({ greetings }) {
+
   return (
-    <div></div>
+    
+        <div className="ItemListContainer">
+          <h1 className="titulo">{ greetings }</h1>
+          <br/>
+          
+        </div>
+     
+   
   );
 };
 
-export default itemListContainer;
+export default ItemListContainer; 

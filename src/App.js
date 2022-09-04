@@ -1,8 +1,9 @@
-import logo from './logo.svg';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import NavBar from './components/NavBar';
-import itemListContainer from './components/itemListContainer/itemListContainer';
+
 import './App.css';
+import NavBar from './components/NavBar';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer.js';
+
+
 
 
 
@@ -10,15 +11,15 @@ function App() {
   return (
   
     <div className="App">
-      <Router>
-         <NavBar/>
-         </Router>
     
-      <header className="App-header">
-      <itemListContainer gretting='Hola Mundo'/>
-        <img src={logo} className="App-logo" alt="logo" />
-     
-      </header>
+         <NavBar/>
+        
+        
+   
+    {<ItemListContainer greetings="Bienvenidos a HP FARMA" />}
+  
+
+      
     </div>
   );
 }

@@ -1,17 +1,15 @@
-import React from 'react';
-import {Link} from 'react-router-dom'
 import CartWidget from './CartWidget/CartWidget';
-
-
-
 const NavBar = () => {
     return (
 
-        <div>
+        <div className='header'>
+    
 
 <nav className="navbar navbar-expand-lg bg-light">
   <div className="container-fluid">
-    <Link to='/'> <img src='../logo.png'></img></Link>
+
+
+    <img src='../logo.png'></img>
     <a className="navbar-brand" href="#"></a>
 
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
