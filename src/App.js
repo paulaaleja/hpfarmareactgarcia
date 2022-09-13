@@ -1,50 +1,21 @@
-
-import './App.css';
-import NavBar from './components/NavBar';
-import getFetch from './components/Data/Data';
-import {useEffect,useState} from 'react';
-
-
-
-
-function App() {
-
-  const[data,setData]=useState([])
-  const [loading,setLoading]=useState(true)
-
- 
- 
+import "./App.css";
+import React from "react";
+import Navbar from "./components/Navbar.js";
+import ItemListContainer from "./components/ItemListContainer";
+import ItemDetailContainer from "./components/ItemDetailContainer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
-
-
-
-
-  useEffect(()=>{
-    getFetch
-    .then(res=>setData(res))
-    .catch(err=>console.log(err))
-    .finally(()=>setLoading(false))
-},[])
-
-
+const App = () => {
   return (
-    <>
-    <NavBar/>
-  
-    <div className="App">
-      <header className='App-header'>
-      </header>
-  <div>
-
-    {
-    loading?<h2>Cargando...</h2>:
-    data.map(medicamento=><li key={medicamento.id}>{medicamento.id} ) {medicamento.name} {medicamento.price}
-    <img src={medicamento.img} width='150' height={'150'} /></li>)
-    }
-  </div>
-</div>
-</>  
+    <BrowserRouter>
+    <Navbar />
+    <Routes>
+    <Route path="/" element={<ItemListContainer/>}/>
+    <Route path="/category/:category" element={<ItemListContainer/>}/>
+    <Route path="/item/:id" element={<ItemDetailContainer/>}/>
+    </Routes>
+    </BrowserRouter>
   );
 }
 
