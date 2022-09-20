@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import CheckOutBtn from "./CheckOutBtn";
 import Counter from "./Counter";
+import { CartContext } from "./CartContext";
 
 const ItemDetail = ({ item }) => {
   const [bought, setBought] = useState(false);
