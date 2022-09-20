@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import CheckOutBtn from "./CheckOutBtn";
 import Counter from "./Counter";
 
 const ItemDetail = ({ item }) => {
+  const [bought, setBought] = useState(false);
+
+  const Cartctx = useContext(CartContext);
+
   const whenAdd = (qty) => {
-    alert(`¡Has comprado ${qty} ${item.name}(s)!`);
+    if (!Cartctx.isInCart(item.name)) {
+      setBought(true);
+      alert(`¡Has comprado ${qty} ${item.name}(s)!`);
+      Cartctx.addItem(item, qty);
+    } else {
+      Cartctx.sumQty(item.id, qty);
+      alert(`¡Has añadido ${qty} unidades a ${item.name}!`);
+      setBought(true);
+    }
   };
 
   return (
@@ -20,7 +33,11 @@ const ItemDetail = ({ item }) => {
                 <p className="iDC__price">Precio: ${item.price}</p>
                 <p className="iDC__stock">{item.stock} :Stock</p>
               </div>
-              <Counter max={item.stock} initial={0} whenAdd={whenAdd} />
+              {bought ? (
+                <CheckOutBtn />
+              ) : (
+                <Counter max={item.stock} initial={0} whenAdd={whenAdd} />
+              )}
             </div>
           </div>
         ) : (
