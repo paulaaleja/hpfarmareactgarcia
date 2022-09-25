@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "./CartContext";
 
+
 const Cart = () => {
   const Cartctx = useContext(CartContext);
   console.log(Cartctx);
@@ -25,7 +26,7 @@ const Cart = () => {
               <p className="obj__totalPrice">Total: ${Cartctx.singleTotal(item.id)}</p>
               <button
                 className="obj__remove"
-                onClick={() => Cartctx.removeItem(item.id)}
+                onClick={() => Cartctx.removeItem(item.name)}
               >
                 Eliminar
               </button>

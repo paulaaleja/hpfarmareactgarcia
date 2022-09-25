@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import CheckOutBtn from "./CheckOutBtn";
-import Counter from "./Counter";
 import { CartContext } from "./CartContext";
+import CheckoutBtn from "./CheckOutBtn";
+import Counter from "./Counter";
 
 const ItemDetail = ({ item }) => {
   const [bought, setBought] = useState(false);
@@ -35,7 +35,7 @@ const ItemDetail = ({ item }) => {
                 <p className="iDC__stock">{item.stock} :Stock</p>
               </div>
               {bought ? (
-                <CheckOutBtn />
+                <CheckoutBtn />
               ) : (
                 <Counter max={item.stock} initial={0} whenAdd={whenAdd} />
               )}
