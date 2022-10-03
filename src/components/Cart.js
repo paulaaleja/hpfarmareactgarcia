@@ -1,15 +1,51 @@
+import { collection, serverTimestamp, doc, getDoc } from "firebase/firestore";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "./CartContext";
-
+import { db } from "../utils/firebaseConfig";
 
 const Cart = () => {
   const Cartctx = useContext(CartContext);
   console.log(Cartctx);
 
   const buy = () => {
-    alert("Se realizó tu compra.");
-    Cartctx.clear();
+    let itemsBought = Cartctx.cartList.map((item) => ({
+      id: item.itemId, //Retorna undefined - Firebase da error porque no puede almacenar el valor "undefined"
+      title: item.name,
+      price: Cartctx.singleTotal(item.id),
+      qty: item.qty,
+    }));
+    let bought = {
+      buyer: {
+        name: "Paula",
+        email: "test@test.com",
+        phone: "1234567891",
+      },
+      date: serverTimestamp(), //Saca la fecha y tiempo del servidor.
+      items: itemsBought,
+    };
+
+    const createOrder = async () => {
+      const newOrder = doc(collection(db, "orders")); //Crea la colección
+      await getDoc(newOrder, bought); //Crea nuevo documento
+      return newOrder;
+    };
+
+    createOrder()
+      .then(
+        (result) =>
+          alert(
+            `Tu orden ha sido tomada...
+        Con el valor de $${Cartctx.priceTotalAll()}.
+        Con el ID "${result.id}".`
+          ),
+        Cartctx.clear()
+      )
+      .catch((err) =>
+        alert(` 
+      No se pudo realizar tu compra... 
+      Error: ${err}`)
+      );
   };
 
   return (
@@ -23,7 +59,9 @@ const Cart = () => {
                 {item.qty} {item.name}
               </p>
               <p className="obj__price">Precio: ${item.price} c/u</p>
-              <p className="obj__totalPrice">Total: ${Cartctx.singleTotal(item.id)}</p>
+              <p className="obj__totalPrice">
+                Total: ${Cartctx.singleTotal(item.id)}
+              </p>
               <button
                 className="obj__remove"
                 onClick={() => Cartctx.removeItem(item.name)}
@@ -36,7 +74,7 @@ const Cart = () => {
           {Cartctx.cartList.length > 0 ? (
             <div className="list__buttons">
               <button className="list__clear" onClick={Cartctx.clear}>
-                Clear
+                Eliminar
               </button>
               <div className="list__pucharse">
                 <p className="list__total">Total: ${Cartctx.priceTotalAll()}</p>
@@ -47,9 +85,15 @@ const Cart = () => {
             </div>
           ) : (
             <div className="noCart">
-            <p className="noCart__text">Actualmente no hay nada en el carrito...</p>
-            <Link to="/"><button className="noCart__btn">Volver a la pagina principal</button></Link>
-            </div>  
+              <p className="noCart__text">
+                Actualmente no hay nada en el carrito...
+              </p>
+              <Link to="/">
+                <button className="noCart__btn">
+                  Volver a la pagina principal
+                </button>
+              </Link>
+            </div>
           )}
         </div>
       </div>
