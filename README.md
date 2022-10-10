@@ -54,3 +54,6 @@ https://github.com/paulaaleja/hpfarmareactgarcia
 Luego continuar con el paso 3 de la otra forma
 
 
+Para visualizar la App se lo puede hacer ingresando a https://hpfarmareactgarcia-opxy1i4fp-paulaaleja.vercel.app/
+
+
