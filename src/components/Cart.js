@@ -1,4 +1,4 @@
-import { collection, serverTimestamp, doc, getDoc } from "firebase/firestore";
+import {  collection, serverTimestamp, doc, getDoc} from "firebase/firestore";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "./CartContext";
@@ -6,25 +6,10 @@ import { db } from "../utils/firebaseConfig";
 import Form from './Form';
 
 
+
 const Cart = () => {
   const Cartctx = useContext(CartContext);
   console.log(Cartctx);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   const buy = () => {
     let itemsBought = Cartctx.cartList.map((item) => ({
       id: item.itemId, 
@@ -52,7 +37,8 @@ const Cart = () => {
       .then(
         (result) =>
           alert(
-            `Tu orden ha sido tomada...
+            `Felicitaciones!!!
+            Tu orden ha sido tomada...
         Con el valor de $${Cartctx.priceTotalAll()}.
         Con el ID "${result.id}".`
           ),
@@ -97,13 +83,6 @@ const Cart = () => {
 			<Form />
 		</div>
 	</React.StrictMode>
-
-
-
-
-
-
-
           {Cartctx.cartList.length > 0 ? (
             <div className="list__buttons">
               <button className="list__clear" onClick={Cartctx.clear}>
