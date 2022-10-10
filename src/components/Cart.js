@@ -3,14 +3,31 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "./CartContext";
 import { db } from "../utils/firebaseConfig";
+import Form from './Form';
+
 
 const Cart = () => {
   const Cartctx = useContext(CartContext);
   console.log(Cartctx);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const buy = () => {
     let itemsBought = Cartctx.cartList.map((item) => ({
-      id: item.itemId, //Retorna undefined - Firebase da error porque no puede almacenar el valor "undefined"
+      id: item.itemId, 
       title: item.name,
       price: Cartctx.singleTotal(item.id),
       qty: item.qty,
@@ -68,19 +85,42 @@ const Cart = () => {
               >
                 Eliminar
               </button>
+
+            
               {/* Se envuelve en funcion anonima porque le pasas parametros. */}
             </div>
           ))}
+ <div class="obj__divext"> <h2> Cargue por favor sus datos para generar la reserva</h2></div>
+
+<React.StrictMode>
+		<div className="obj__div">
+			<Form />
+		</div>
+	</React.StrictMode>
+
+
+
+
+
+
+
           {Cartctx.cartList.length > 0 ? (
             <div className="list__buttons">
               <button className="list__clear" onClick={Cartctx.clear}>
                 Eliminar
               </button>
-              <div className="list__pucharse">
-                <p className="list__total">Total: ${Cartctx.priceTotalAll()}</p>
-                <button className="list__buy" onClick={buy}>
-                  Realizar compra
+
+              <Link to="/">
+                <button className="list__add">
+                  Sumar productos
                 </button>
+              </Link>
+              <div className="list__pucharse">
+                <h1 className="list__total">Total: ${Cartctx.priceTotalAll()}</h1>
+
+                <button className="list__buy" onClick={buy}>
+                 Comprar
+                </button> 
               </div>
             </div>
           ) : (
@@ -89,8 +129,8 @@ const Cart = () => {
                 Actualmente no hay nada en el carrito...
               </p>
               <Link to="/">
-                <button className="noCart__btn">
-                  Volver a la pagina principal
+                <button className="list__buy">
+                  Volver a principal
                 </button>
               </Link>
             </div>

@@ -8,6 +8,7 @@
   list-style-type: none;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;
+  font-size: 1.2rem;
 }
 
 a {
@@ -170,7 +171,7 @@ a {
   justify-content: center;
   align-items: center;
   margin: 1.5rem 0;
-  background-color: rgba(11, 196, 247, 0.413);
+  background-color:#236ee7a0;
 }
 
 .card__img{
@@ -309,6 +310,16 @@ a {
   margin-bottom: 2rem;
 }
 
+
+.obj__divext {
+
+  border-radius: 5px;
+  display: grid;
+  grid-template-rows: none;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
 .obj__img {
   height: 250px;
   width: 320px;
@@ -374,4 +385,113 @@ a {
   align-self: center;
   justify-self: center;
   margin-right: 4.6rem;
+}
+
+
+.list__add {
+  background-color: rgb(16, 35, 208);
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  align-self: center;
+  justify-self: center;
+  margin-right: 4.6rem;
+}
+
+.list__total{
+
+
+  grid-area: delete;
+ 
+  border: none;
+  color: rgb(244, 208, 208);
+  font-size: 1rem;
+  width: 135px;
+  height: 50px;
+  border-radius: 3px;
+  align-self: center;
+  justify-self: center;
+}
+
+
+
+/* Form */
+
+
+ .form{
+  margin: 0 auto;
+  height: 1000px;
+  max-width:850px;
+  border: 1px solid #e07924;
+  box-shadow: 0 5px 15px #e07924;
+  border-radius: 10px;
+  padding: 0 3%;
+  background-color: #f1f1f1;
+  margin-bottom: 300px;
+  z-index: 10;
+}
+
+.FinalizandoCompra{
+  color: #e07924;
+  text-align: center;
+  padding: 50px;
+}
+
+.formText{
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+}
+
+.formText {
+  color: #e07924;
+}
+
+input{
+  background: #fff;
+  align-items: center;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid #e07924; 
+  color: white;
+  box-shadow: 1px 5px 5px #e07924;
+  padding: 5px 0;
+  margin: 5px 0;
+
+}
+
+input::placeholder {
+  color: #e07924;
+  font-weight: 500;
+}
+
+input:focus {
+  background: none;
+  outline: none;
+  box-shadow: none;}
+
+
+
+
+
+
+
+
+
+
+.formcontainer{
+  width: 100%;
+  height: 400px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display:contents;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+  background-color: rgba(11, 196, 247, 0.413);
 }
